@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Đón Dâu — Nghệ An 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1c1c1c',
+                        accent: '#a68a5c', // Gold/Bronze
+                        bgCream: '#faf9f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #faf9f6;
+            color: #1c1c1c;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #a68a5c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8c734b; }
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 1px;
+            background-color: #d1d5db;
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before { left: 50%; }
+        }
+        
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-accent selection:text-white">
+
+    <header class="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+        
+        <div class="z-10 fade-in">
+            <p class="text-sm tracking-[0.3em] uppercase mb-4 text-gray-500 font-medium">Hành Trình Đón Dâu</p>
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">
+                Hà Nội <span class="text-accent text-3xl md:text-5xl mx-2">→</span> <span class="italic text-accent">Nghệ An</span>
+            </h1>
+            <p class="font-serif text-2xl md:text-3xl tracking-widest text-gray-700">28 — 29 . 03 . 2026</p>
+        </div>
+
+        <a href="#schedule" class="absolute bottom-12 flex flex-col items-center animate-bounce text-gray-400 hover:text-accent transition-colors z-10">
+            <span class="text-xs tracking-widest uppercase mb-2">Cuộn xuống</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </a>
+    </header>
+
+    <main id="schedule" class="py-20 md:py-32 px-4 max-w-4xl mx-auto">
+        
+        <section class="mb-24 fade-in">
+            <div class="text-center mb-16">
+                <span class="text-accent uppercase tracking-widest text-sm font-semibold">Ngày thứ nhất</span>
+                <h2 class="font-serif text-4xl md:text-5xl mt-3 mb-2">Khởi Hành & Giao Lưu</h2>
+                <p class="text-gray-500 font-serif italic text-lg">Thứ Bảy, 28 tháng 3 năm 2026</p>
+                
+                <div class="mt-8 bg-white border border-gray-200 p-6 rounded-xl shadow-sm inline-block text-left max-w-lg mx-auto">
+                    <p class="text-sm leading-relaxed text-gray-600">
+                        <strong class="text-primary">Lưu ý:</strong> Anh em chủ động thời gian vì xe cần phải ra khỏi nội thành đúng giờ quy định.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative timeline-line">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                        <h3 class="text-xl font-serif font-semibold">Xuất phát từ Hà Nội</h3>
+                        <p class="text-gray-500 mt-2 text-sm">Tập trung tại 11 Cửa Bắc, đoàn xe di chuyển về Nghệ An.</p>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                        🚐
+                    </div>
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
+                        <span class="text-accent font-bold tracking-wider">06:30</span>
+                        <div class="md:hidden mt-1">
+                            <h3 class="text-xl font-serif font-semibold text-primary">Xuất phát từ Hà Nội</h3>
+                            <p class="text-gray-500 mt-2 text-sm leading-relaxed">Tập trung tại 11 Cửa Bắc, đoàn xe di chuyển về Nghệ An.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                        <span class="text-accent font-bold tracking-wider">11:00</span>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                        🍜
+                    </div>
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
+                        <h3 class="text-xl font-serif font-semibold text-primary">Nghỉ chân tại nhà Hồ Trung Công</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed hidden md:block">Theo lời mời của Công, anh em dừng chân ăn uống và nghỉ ngơi trước khi tiếp tục.</p>
+                        <div class="md:hidden mt-1">
+                            <span class="text-accent font-bold tracking-wider block mb-1">11:00</span>
+                            <p class="text-gray-500 text-sm leading-relaxed">Theo lời mời của Công, anh em dừng chân ăn uống và nghỉ ngơi trước khi tiếp tục.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                        <h3 class="text-xl font-serif font-semibold">Thắp hương Đền Cờn</h3>
+                        <p class="text-gray-500 mt-2 text-sm">Đoàn xe di chuyển ra Đền Cờn — thắp hương cầu may, vãn cảnh.</p>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                        🛕
+                    </div>
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
+                        <span class="text-accent font-bold tracking-wider">13:00 — 15:00</span>
+                        <div class="md:hidden mt-1">
+                            <h3 class="text-xl font-serif font-semibold text-primary">Thắp hương Đền Cờn</h3>
+                            <p class="text-gray-500 mt-2 text-sm leading-relaxed">Đoàn xe di chuyển ra Đền Cờn — thắp hương cầu may, vãn cảnh.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center text-accent text-2xl my-16 fade-in">✦</div>
+
+        <section class="fade-in">
+            <div class="text-center mb-16">
+                <span class="text-accent uppercase tracking-widest text-sm font-semibold">Ngày thứ hai</span>
+                <h2 class="font-serif text-4xl md:text-5xl mt-3 mb-2">Đón Dâu & Hồi Hương</h2>
+                <p class="text-gray-500 font-serif italic text-lg">Chủ Nhật, 29 tháng 3 năm 2026</p>
+                
+                <div class="mt-8 bg-white border border-gray-200 p-6 rounded-xl shadow-sm inline-block text-left max-w-lg mx-auto">
+                    <p class="text-sm leading-relaxed text-gray-600">
+                        <strong class="text-primary">Lưu ý:</strong> Anh em đi đón dâu chủ động dậy sớm ăn sáng và đi cùng đoàn của gia đình.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative timeline-line">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                        <h3 class="text-xl font-serif font-semibold">Xe đón dâu xuất phát</h3>
+                        <p class="text-gray-500 mt-2 text-sm">Đoàn xe đón dâu bắt đầu di chuyển vào Cửa Lò.</p>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                        💐
+                    </div>
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
+                        <span class="text-accent font-bold tracking-wider">07:00</span>
+                        <div class="md:hidden mt-1">
+                            <h3 class="text-xl font-serif font-semibold text-primary">Xe đón dâu xuất phát</h3>
+                            <p class="text-gray-500 mt-2 text-sm leading-relaxed">Đoàn xe đón dâu bắt đầu di chuyển vào Cửa Lò.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                    <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
+                        <span class="text-accent font-bold tracking-wider">10:30</span>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                        💍
+                    </div>
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
+                        <h3 class="text-xl font-serif font-semibold text-primary">Đón dâu & Khai tiệc</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed hidden md:block">Xe đón dâu về tới nơi — chính thức khai tiệc mừng hạnh phúc đôi lứa.</p>
+                        <div class="md:hidden mt-1">
+                            <span class="text-accent font-bold tracking-wider block mb-1">10:30</span>
+                            <p class="text-gray-500 text-sm leading-relaxed">Xe đón dâu về tới nơi — chính thức khai tiệc mừng hạnh phúc đôi lứa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-gray-200 text-center fade-in mt-12">
+        <h3 class="font-serif text-2xl md:text-3xl text-primary mb-4">Chúc đôi uyên ương trăm năm hạnh phúc!</h3>
+        <p class="text-sm tracking-[0.2em] text-accent uppercase">✦ Hà Nội — Nghệ An — 2026 ✦</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
