@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hành Trình Đón Dâu — Ninh Bình & Đà Nẵng 2026</title>
+    <title>Lịch Trình Lễ Cưới — Ninh Bình & Đà Nẵng 2026</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Bổ sung font Dancing Script cho tên Cô Dâu Chú Rể -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -18,11 +19,13 @@
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
                         sans: ['Montserrat', 'sans-serif'],
+                        script: ['"Dancing Script"', 'cursive'], // Thêm font script
                     },
                     colors: {
-                        primary: '#1c1c1c',
-                        accent: '#a68a5c', // Gold/Bronze
-                        bgCream: '#faf9f6',
+                        primary: '#1a1a1a',
+                        accent: '#c5a059', // Gold lãng mạn hơn
+                        accentLight: '#dfcc9f',
+                        bgCream: '#fffdfa', // Trắng ngà ấm áp
                     }
                 }
             }
@@ -30,14 +33,14 @@
     </script>
     <style>
         body {
-            background-color: #faf9f6;
-            color: #1c1c1c;
+            background-color: #fffdfa;
+            color: #1a1a1a;
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #a68a5c; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8c734b; }
+        ::-webkit-scrollbar-track { background: #fdfbf7; }
+        ::-webkit-scrollbar-thumb { background: #c5a059; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a88544; }
         
         .timeline-line::before {
             content: '';
@@ -46,7 +49,7 @@
             bottom: 0;
             left: 24px;
             width: 1px;
-            background-color: #d1d5db;
+            background-color: #e5e7eb;
             z-index: 0;
         }
         @media (min-width: 768px) {
@@ -57,57 +60,77 @@
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Subtle background pattern */
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c5a059' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-accent selection:text-white">
+<body class="font-sans antialiased selection:bg-accent selection:text-white bg-pattern">
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Phong cách thiệp cưới) -->
     <header class="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
-        
-        <div class="z-10 fade-in">
-            <p class="text-sm tracking-[0.3em] uppercase mb-4 text-gray-500 font-medium">Hành Trình Đón Dâu</p>
-            <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">
-                Ninh Bình <span class="text-accent text-3xl md:text-5xl mx-2">→</span> <span class="italic text-accent">Đà Nẵng</span>
+        <div class="z-10 fade-in flex flex-col items-center">
+            <!-- Icon Nhẫn cưới -->
+            <svg class="w-16 h-16 text-accent mb-6 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="12" r="6"></circle>
+                <circle cx="15" cy="12" r="6"></circle>
+                <path d="M12 6 l2 -3 l2 3"></path>
+                <path d="M7 6 l2 -3 l2 3"></path>
+            </svg>
+
+            <p class="text-xs md:text-sm tracking-[0.4em] uppercase mb-4 text-gray-500 font-medium">Lịch Trình Lễ Cưới</p>
+            
+            <!-- Tên Cô Dâu Chú Rể -->
+            <h1 class="font-script text-6xl md:text-8xl text-accent mb-6 leading-tight drop-shadow-sm">
+                Ngọc Minh <span class="text-4xl md:text-6xl text-gray-300 mx-2 font-serif">&amp;</span> Hoàng Hường
             </h1>
-            <p class="font-serif text-2xl md:text-3xl tracking-widest text-gray-700">17 . 05 . 2026 — 07 . 06 . 2026</p>
+            
+            <h2 class="font-serif text-2xl md:text-4xl mb-8 text-primary">
+                Ninh Bình <span class="text-accent text-xl mx-2">→</span> <span class="italic text-accent">Đà Nẵng</span>
+            </h2>
+            
+            <div class="border-y border-accentLight py-3 px-8 inline-block">
+                <p class="font-sans text-sm md:text-base tracking-[0.2em] text-gray-600 uppercase">17 . 05 . 2026 — 07 . 06 . 2026</p>
+            </div>
         </div>
 
         <a href="#schedule" class="absolute bottom-12 flex flex-col items-center animate-bounce text-gray-400 hover:text-accent transition-colors z-10">
-            <span class="text-xs tracking-widest uppercase mb-2">Cuộn xuống</span>
+            <span class="text-[10px] tracking-[0.2em] uppercase mb-2">Xem chi tiết</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </a>
     </header>
 
     <!-- Schedule Section -->
-    <main id="schedule" class="py-20 md:py-32 px-4 max-w-4xl mx-auto">
+    <main id="schedule" class="py-20 md:py-32 px-4 max-w-4xl mx-auto relative">
         
         <!-- PHẦN 1: 17/05/2026 -->
-        <section class="mb-24 fade-in">
+        <section class="mb-20 fade-in">
             <div class="text-center mb-16">
-                <span class="text-accent uppercase tracking-widest text-sm font-semibold">Sự kiện</span>
-                <h2 class="font-serif text-4xl md:text-5xl mt-3 mb-2">Giao Lưu Tại Ninh Bình</h2>
+                <span class="text-accent uppercase tracking-widest text-xs font-semibold">Sự kiện</span>
+                <h2 class="font-serif text-3xl md:text-5xl mt-3 mb-2">Giao Lưu Tại Ninh Bình</h2>
                 <p class="text-gray-500 font-serif italic text-lg">Chủ Nhật, 17 tháng 5 năm 2026</p>
             </div>
 
             <div class="relative timeline-line">
-                <!-- Item 1 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <!-- Item 1: Normal -->
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <h3 class="text-xl font-serif font-semibold">Xuất phát từ Tam Điệp</h3>
-                        <p class="text-gray-500 mt-2 text-sm">Tập trung tại ... đoàn xe di chuyển về Yên Hòa, Yên Mô.</p>
+                        <h3 class="text-xl font-serif font-semibold text-primary">Xuất phát từ Tam Điệp</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Tập trung tại ... đoàn xe di chuyển về Yên Hòa, Yên Mô.</p>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         🚐
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <span class="text-accent font-bold tracking-wider">06:30</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">06:30</span>
                         <div class="md:hidden mt-1">
                             <h3 class="text-xl font-serif font-semibold text-primary">Xuất phát từ Tam Điệp</h3>
                             <p class="text-gray-500 mt-2 text-sm leading-relaxed">Tập trung tại ... đoàn xe di chuyển về Yên Hòa, Yên Mô.</p>
@@ -115,49 +138,63 @@
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <!-- Item 2: HIGHLIGHTED -->
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <span class="text-accent font-bold tracking-wider">11:00</span>
+                        <span class="text-accent font-bold tracking-wider text-lg">11:00</span>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
-                        🥂
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                        <span class="absolute w-16 h-16 rounded-full bg-accent opacity-30 animate-ping"></span>
+                        <div class="relative flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white border-4 border-bgCream text-2xl shadow-xl transition-transform group-hover:scale-110 z-10">
+                            🥂
+                        </div>
                     </div>
-                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <h3 class="text-xl font-serif font-semibold text-primary">Giao lưu tại Tư gia nhà Gái</h3>
-                        <p class="text-gray-500 mt-2 text-sm leading-relaxed hidden md:block">Theo lời mời của Minh, Anh em di chuyển tới nhà gái, cùng giao lưu ăn cỗ và chúc phúc cho đôi bạn trẻ.</p>
-                        <div class="md:hidden mt-1">
-                            <span class="text-accent font-bold tracking-wider block mb-1">11:00</span>
-                            <p class="text-gray-500 text-sm leading-relaxed">Theo lời mời của Minh, Anh em di chuyển tới nhà gái, cùng giao lưu ăn cỗ và chúc phúc cho đôi bạn trẻ.</p>
+
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-1 md:pt-0">
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border-l border-t border-accentLight relative transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                            <span class="absolute -top-3 right-4 bg-accent text-white text-[9px] uppercase font-bold tracking-[0.15em] px-3 py-1 rounded-full shadow-sm">
+                                Sự kiện chính
+                            </span>
+                            <h3 class="text-2xl font-serif font-bold text-accent mb-2">Giao lưu Tư gia nhà Gái</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed hidden md:block">Theo lời mời của Minh, Anh em di chuyển tới nhà gái, cùng giao lưu ăn cỗ và chúc phúc cho đôi bạn trẻ.</p>
+                            <div class="md:hidden">
+                                <span class="text-accent font-bold tracking-wider block mb-2">11:00</span>
+                                <p class="text-gray-600 text-sm leading-relaxed">Theo lời mời của Minh, Anh em di chuyển tới nhà gái, cùng giao lưu ăn cỗ và chúc phúc cho đôi bạn trẻ.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="text-center text-accent text-2xl my-16 fade-in">✦</div>
+        <!-- Divider Trái Tim Lãng Mạn -->
+        <div class="flex items-center justify-center my-20 fade-in opacity-60">
+            <div class="h-[1px] w-16 bg-accentLight"></div>
+            <svg class="w-5 h-5 text-accent mx-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <div class="h-[1px] w-16 bg-accentLight"></div>
+        </div>
 
         <!-- PHẦN 2: 05/06/2026 -->
-        <section class="mb-24 fade-in">
+        <section class="mb-20 fade-in">
             <div class="text-center mb-16">
-                <span class="text-accent uppercase tracking-widest text-sm font-semibold">Khởi Hành</span>
-                <h2 class="font-serif text-4xl md:text-5xl mt-3 mb-2">Tập Kết Tại Hà Nội</h2>
+                <span class="text-accent uppercase tracking-widest text-xs font-semibold">Khởi Hành</span>
+                <h2 class="font-serif text-3xl md:text-5xl mt-3 mb-2">Tập Kết Tại Hà Nội</h2>
                 <p class="text-gray-500 font-serif italic text-lg">Thứ Sáu, 5 tháng 6 năm 2026</p>
             </div>
 
             <div class="relative timeline-line">
                 <!-- Item 1 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <h3 class="text-xl font-serif font-semibold">Xuất phát từ Tam Điệp</h3>
-                        <p class="text-gray-500 mt-2 text-sm">Tập trung tại ... Anh em di chuyển đến 60 Dương Khuê, Hà Nội</p>
+                        <h3 class="text-xl font-serif font-semibold text-primary">Xuất phát từ Tam Điệp</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Tập trung tại ... Anh em di chuyển đến 60 Dương Khuê, Hà Nội</p>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         🚗
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <span class="text-accent font-bold tracking-wider">07:00</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">07:00</span>
                         <div class="md:hidden mt-1">
                             <h3 class="text-xl font-serif font-semibold text-primary">Xuất phát từ Tam Điệp</h3>
                             <p class="text-gray-500 mt-2 text-sm leading-relaxed">Tập trung tại ... Anh em di chuyển đến 60 Dương Khuê, Hà Nội</p>
@@ -167,29 +204,33 @@
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="text-center text-accent text-2xl my-16 fade-in">✦</div>
+        <!-- Divider Trái Tim Lãng Mạn -->
+        <div class="flex items-center justify-center my-20 fade-in opacity-60">
+            <div class="h-[1px] w-16 bg-accentLight"></div>
+            <svg class="w-5 h-5 text-accent mx-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <div class="h-[1px] w-16 bg-accentLight"></div>
+        </div>
 
         <!-- PHẦN 3: 06/06/2026 -->
-        <section class="mb-24 fade-in">
+        <section class="mb-20 fade-in">
             <div class="text-center mb-16">
-                <span class="text-accent uppercase tracking-widest text-sm font-semibold">Tiến về Miền Trung</span>
-                <h2 class="font-serif text-4xl md:text-5xl mt-3 mb-2">Hành Trình Đà Nẵng</h2>
+                <span class="text-accent uppercase tracking-widest text-xs font-semibold">Tiến về Miền Trung</span>
+                <h2 class="font-serif text-3xl md:text-5xl mt-3 mb-2">Hành Trình Đà Nẵng</h2>
                 <p class="text-gray-500 font-serif italic text-lg">Thứ Bảy, 6 tháng 6 năm 2026</p>
             </div>
 
             <div class="relative timeline-line">
                 <!-- Item 1 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <h3 class="text-xl font-serif font-semibold">Ăn uống & Nghỉ ngơi</h3>
-                        <p class="text-gray-500 mt-2 text-sm">Anh em tập trung ăn uống, nghỉ ngơi tại Hà Nội.</p>
+                        <h3 class="text-xl font-serif font-semibold text-primary">Ăn uống & Nghỉ ngơi</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Anh em tập trung ăn uống, nghỉ ngơi tại Hà Nội.</p>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         🍽️
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <span class="text-accent font-bold tracking-wider">10:30</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">10:30</span>
                         <div class="md:hidden mt-1">
                             <h3 class="text-xl font-serif font-semibold text-primary">Ăn uống & Nghỉ ngơi</h3>
                             <p class="text-gray-500 mt-2 text-sm leading-relaxed">Anh em tập trung ăn uống, nghỉ ngơi tại Hà Nội.</p>
@@ -198,11 +239,11 @@
                 </div>
 
                 <!-- Item 2 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <span class="text-accent font-bold tracking-wider">16:00</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">16:00</span>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         ✈️
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
@@ -216,16 +257,16 @@
                 </div>
 
                 <!-- Item 3 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <h3 class="text-xl font-serif font-semibold">Giao lưu tại Tư gia nhà Trai</h3>
-                        <p class="text-gray-500 mt-2 text-sm">Anh em di chuyển tới nhà trai, cùng giao lưu ăn cỗ và tham gia chương trình văn nghệ.</p>
+                        <h3 class="text-xl font-serif font-semibold text-primary">Giao lưu tại Tư gia nhà Trai</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Anh em di chuyển tới nhà trai, cùng giao lưu ăn cỗ và tham gia chương trình văn nghệ.</p>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         🎉
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <span class="text-accent font-bold tracking-wider">18:00</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">18:00</span>
                         <div class="md:hidden mt-1">
                             <h3 class="text-xl font-serif font-semibold text-primary">Giao lưu tại Tư gia nhà Trai</h3>
                             <p class="text-gray-500 mt-2 text-sm leading-relaxed">Anh em di chuyển tới nhà trai, cùng giao lưu ăn cỗ và tham gia chương trình văn nghệ.</p>
@@ -234,11 +275,11 @@
                 </div>
 
                 <!-- Item 4 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <span class="text-accent font-bold tracking-wider">Buổi Tối</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">Buổi Tối</span>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         🌙
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
@@ -253,29 +294,33 @@
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="text-center text-accent text-2xl my-16 fade-in">✦</div>
+        <!-- Divider Trái Tim Lãng Mạn -->
+        <div class="flex items-center justify-center my-20 fade-in opacity-60">
+            <div class="h-[1px] w-16 bg-accentLight"></div>
+            <svg class="w-5 h-5 text-accent mx-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <div class="h-[1px] w-16 bg-accentLight"></div>
+        </div>
 
         <!-- PHẦN 4: 07/06/2026 -->
         <section class="fade-in">
             <div class="text-center mb-16">
-                <span class="text-accent uppercase tracking-widest text-sm font-semibold">Ngày Trọng Đại</span>
-                <h2 class="font-serif text-4xl md:text-5xl mt-3 mb-2">Đón Dâu & Hồi Hương</h2>
+                <span class="text-accent uppercase tracking-widest text-xs font-semibold">Ngày Trọng Đại</span>
+                <h2 class="font-serif text-3xl md:text-5xl mt-3 mb-2 text-primary">Lễ Cưới & Hồi Hương</h2>
                 <p class="text-gray-500 font-serif italic text-lg">Chủ Nhật, 7 tháng 6 năm 2026</p>
             </div>
 
             <div class="relative timeline-line">
                 <!-- Item 1 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <h3 class="text-xl font-serif font-semibold">Xe đón dâu xuất phát</h3>
-                        <p class="text-gray-500 mt-2 text-sm">Đoàn xe bắt đầu di chuyển đi đón dâu.</p>
+                        <h3 class="text-xl font-serif font-semibold text-primary">Xe đón dâu xuất phát</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Đoàn xe bắt đầu di chuyển đi đón dâu.</p>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         💐
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <span class="text-accent font-bold tracking-wider">07:00</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">07:00</span>
                         <div class="md:hidden mt-1">
                             <h3 class="text-xl font-serif font-semibold text-primary">Xe đón dâu xuất phát</h3>
                             <p class="text-gray-500 mt-2 text-sm leading-relaxed">Đoàn xe bắt đầu di chuyển đi đón dâu.</p>
@@ -283,35 +328,45 @@
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <!-- Item 2: HIGHLIGHTED MAIN EVENT -->
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <span class="text-accent font-bold tracking-wider">10:30</span>
+                        <span class="text-accent font-bold tracking-wider text-xl">10:30</span>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
-                        💍
+                    
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                        <span class="absolute w-16 h-16 rounded-full bg-accent opacity-30 animate-ping"></span>
+                        <div class="relative flex items-center justify-center w-14 h-14 rounded-full bg-accent text-white border-4 border-bgCream text-2xl shadow-xl transition-transform group-hover:scale-110 z-10">
+                            💍
+                        </div>
                     </div>
-                    <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <h3 class="text-xl font-serif font-semibold text-primary">Đón dâu & Khai tiệc</h3>
-                        <p class="text-gray-500 mt-2 text-sm leading-relaxed hidden md:block">Chính thức khai tiệc mừng hạnh phúc đôi lứa.</p>
-                        <div class="md:hidden mt-1">
-                            <span class="text-accent font-bold tracking-wider block mb-1">10:30</span>
-                            <p class="text-gray-500 text-sm leading-relaxed">Chính thức khai tiệc mừng hạnh phúc đôi lứa.</p>
+
+                    <div class="pl-20 md:pl-12 md:w-1/2 pt-1 md:pt-0">
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border-l border-t border-accentLight relative transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                            <span class="absolute -top-3 right-4 bg-accent text-white text-[9px] uppercase font-bold tracking-[0.15em] px-3 py-1 rounded-full shadow-sm">
+                                Khoảnh khắc vàng
+                            </span>
+                            <h3 class="text-2xl font-serif font-bold text-accent mb-2">Đón dâu & Khai tiệc</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed hidden md:block">Giờ phút thiêng liêng nhất. Chính thức khai tiệc mừng hạnh phúc đôi lứa.</p>
+                            <div class="md:hidden">
+                                <span class="text-accent font-bold tracking-wider block mb-2">10:30</span>
+                                <p class="text-gray-600 text-sm leading-relaxed">Giờ phút thiêng liêng nhất. Chính thức khai tiệc mừng hạnh phúc đôi lứa.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-12 group">
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center mb-16 group">
                     <div class="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                        <h3 class="text-xl font-serif font-semibold">Hồi hương — Về Hà Nội</h3>
-                        <p class="text-gray-500 mt-2 text-sm">Anh em di chuyển ra sân bay về lại Hà Nội. Kết thúc hành trình.</p>
+                        <h3 class="text-xl font-serif font-semibold text-primary">Hồi hương — Về Hà Nội</h3>
+                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Anh em di chuyển ra sân bay về lại Hà Nội. Kết thúc hành trình.</p>
                     </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 text-xl shadow-sm transition-transform group-hover:scale-110 group-hover:border-accent">
                         🏠
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
-                        <span class="text-accent font-bold tracking-wider">16:00</span>
+                        <span class="text-gray-400 font-bold tracking-wider group-hover:text-accent transition-colors">16:00</span>
                         <div class="md:hidden mt-1">
                             <h3 class="text-xl font-serif font-semibold text-primary">Hồi hương — Về Hà Nội</h3>
                             <p class="text-gray-500 mt-2 text-sm leading-relaxed">Anh em di chuyển ra sân bay về lại Hà Nội. Kết thúc hành trình.</p>
@@ -324,9 +379,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-200 text-center fade-in mt-12">
-        <h3 class="font-serif text-2xl md:text-3xl text-primary mb-4">Chúc đôi uyên ương trăm năm hạnh phúc!</h3>
-        <p class="text-sm tracking-[0.2em] text-accent uppercase">✦ Ninh Bình — Đà Nẵng — 2026 ✦</p>
+    <footer class="py-16 border-t border-gray-200 text-center fade-in mt-8 bg-white">
+        <h3 class="font-script text-4xl md:text-5xl text-accent mb-4">Trăm năm tình viên mãn</h3>
+        <p class="text-xs md:text-sm tracking-[0.3em] text-gray-400 uppercase">✦ Ninh Bình — Đà Nẵng — 2026 ✦</p>
     </footer>
 
     <!-- Script tạo hiệu ứng -->
