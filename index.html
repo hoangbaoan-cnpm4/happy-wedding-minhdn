@@ -29,51 +29,295 @@
         }
     </script>
     <style>
-        body {
-            background-color: #faf9f6;
-            color: #1c1c1c;
+        :root {
+            --ink: #1c1c1c;
+            --muted: #68625a;
+            --paper: #faf9f6;
+            --paper-soft: #fffdf8;
+            --accent: #a68a5c;
+            --accent-dark: #7e653f;
+            --line: rgba(166, 138, 92, 0.28);
+            --shadow: 0 22px 70px rgba(36, 29, 20, 0.12);
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #a68a5c; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8c734b; }
-        
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(90deg, rgba(166, 138, 92, 0.08) 1px, transparent 1px) 0 0 / 72px 72px,
+                linear-gradient(180deg, #fffaf0 0%, var(--paper) 34%, #f4efe5 100%);
+            color: var(--ink);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2)),
+                url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+            opacity: 0.58;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(115deg, rgba(255, 255, 255, 0.82) 0 16%, transparent 16% 100%),
+                linear-gradient(245deg, rgba(166, 138, 92, 0.16) 0 12%, transparent 12% 100%);
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #eee6da; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #c4a875, var(--accent-dark));
+            border: 2px solid #eee6da;
+            border-radius: 999px;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #d7bc86, var(--accent-dark));
+            box-shadow: 0 0 18px rgba(166, 138, 92, 0.45);
+        }
+
+        header {
+            isolation: isolate;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 24px;
+            z-index: 0;
+            border: 1px solid rgba(166, 138, 92, 0.22);
+            pointer-events: none;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: auto 8% 9%;
+            z-index: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(166, 138, 92, 0.58), transparent);
+        }
+
+        header h1 {
+            text-wrap: balance;
+            text-shadow: 0 14px 35px rgba(58, 42, 24, 0.12);
+        }
+
+        main > section {
+            scroll-margin-top: 32px;
+        }
+
+        main > section > .text-center {
+            position: relative;
+        }
+
+        main > section > .text-center::after {
+            content: "";
+            display: block;
+            width: min(180px, 44vw);
+            height: 1px;
+            margin: 24px auto 0;
+            background: linear-gradient(90deg, transparent, rgba(166, 138, 92, 0.72), transparent);
+        }
+
         .timeline-line::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             bottom: 0;
             left: 24px;
-            width: 1px;
-            background-color: #d1d5db;
+            width: 2px;
+            background:
+                linear-gradient(var(--line), var(--line)) padding-box,
+                linear-gradient(180deg, transparent, rgba(166, 138, 92, 0.55), transparent) border-box;
             z-index: 0;
         }
-        @media (min-width: 768px) {
-            .timeline-line::before { left: 50%; }
+
+        .timeline-line > .group {
+            min-height: 78px;
         }
-        
-        /* Fade in animation */
-        .fade-in {
+
+        .timeline-line > .group > div:first-child,
+        .timeline-line > .group > div:last-child {
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .timeline-line > .group > div:first-child,
+        .timeline-line > .group > div:last-child {
+            position: relative;
+        }
+
+        .timeline-line > .group > div:first-child::before,
+        .timeline-line > .group > div:last-child::before {
+            content: "";
+            position: absolute;
+            inset: -16px -18px -16px 62px;
+            z-index: -1;
+            border: 1px solid rgba(166, 138, 92, 0.16);
+            border-radius: 8px;
+            background: rgba(255, 253, 248, 0.72);
+            box-shadow: 0 14px 42px rgba(36, 29, 20, 0.07);
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(8px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
         }
-        .fade-in.visible {
+
+        .timeline-line > .group:hover > div:first-child::before,
+        .timeline-line > .group:hover > div:last-child::before {
             opacity: 1;
             transform: translateY(0);
         }
+
+        .timeline-line > .group:hover > div:first-child,
+        .timeline-line > .group:hover > div:last-child {
+            transform: translateY(-2px);
+        }
+
+        .timeline-line h3 {
+            letter-spacing: 0;
+            line-height: 1.25;
+        }
+
+        .timeline-line p,
+        .timeline-line li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .timeline-line strong {
+            color: #3a3229;
+            font-weight: 600;
+        }
+
+        .timeline-line em {
+            color: #847565;
+        }
+
+        .timeline-line [class*="rounded-full"] {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 253, 248, 0.92) !important;
+            border-color: rgba(166, 138, 92, 0.72) !important;
+            box-shadow:
+                0 11px 30px rgba(36, 29, 20, 0.14),
+                inset 0 0 0 6px rgba(166, 138, 92, 0.08);
+        }
+
+        .timeline-line .group:hover [class*="rounded-full"] {
+            box-shadow:
+                0 16px 40px rgba(36, 29, 20, 0.18),
+                inset 0 0 0 6px rgba(166, 138, 92, 0.14);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            filter: blur(8px);
+            transition:
+                opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: var(--delay, 0ms);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        footer {
+            background: rgba(255, 253, 248, 0.62);
+            backdrop-filter: blur(14px);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-line > .group > div:first-child::before {
+                inset: -18px 24px -18px -24px;
+            }
+
+            .timeline-line > .group > div:last-child::before {
+                inset: -18px -24px -18px 24px;
+            }
+
+            .timeline-line > .group:nth-child(odd) > div:first-child,
+            .timeline-line > .group:nth-child(even) > div:last-child {
+                padding-top: 6px;
+                padding-bottom: 6px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            header::before {
+                inset: 14px;
+            }
+
+            .timeline-line > .group {
+                margin-bottom: 2.75rem;
+            }
+
+            .timeline-line > .group > div:last-child::before {
+                inset: -14px -10px -14px 70px;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .fade-in {
+                filter: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-accent selection:text-white">
+<body class="font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+    <div id="scroll-progress" aria-hidden="true"></div>
 
     <!-- Hero Section -->
-    <header class="relative h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+    <header class="relative min-h-[94vh] flex flex-col items-center justify-center text-center px-5 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-15" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
         
-        <div class="z-10 fade-in">
+        <div class="z-10 fade-in max-w-5xl mx-auto">
             <p class="text-sm tracking-[0.3em] uppercase mb-4 text-gray-500 font-medium">Hành Trình Đón Dâu</p>
-            <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-tight">
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight">
                 Ninh Bình <span class="text-accent text-3xl md:text-5xl mx-2">→</span> <span class="italic text-accent">Đà Nẵng</span>
             </h1>
             <p class="font-serif text-2xl md:text-3xl tracking-widest text-gray-700">05 . 06 . 2026 — 08 . 06 . 2026</p>
@@ -86,7 +330,7 @@
     </header>
 
     <!-- Schedule Section -->
-    <main id="schedule" class="py-20 md:py-32 px-4 max-w-4xl mx-auto">
+    <main id="schedule" class="py-20 md:py-32 px-5 max-w-5xl mx-auto">
         
         <!-- PHẦN 1: 05/06/2026 -->
         <section class="mb-24 fade-in">
@@ -295,7 +539,7 @@
                         <span class="text-accent font-bold tracking-wider">16:30</span>
                     </div>
                     <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-accent text-xl shadow-md transition-transform group-hover:scale-110">
-                        
+                        🌅
                     </div>
                     <div class="pl-20 md:pl-12 md:w-1/2 pt-2 md:pt-0">
                         <h3 class="text-xl font-serif font-semibold text-primary">Sơn Trà & Hoàng hôn (Tùy chọn)</h3>
@@ -662,7 +906,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-200 text-center fade-in mt-12">
+    <footer class="py-12 md:py-16 border-t border-gray-200 text-center fade-in mt-12 px-5">
         <h3 class="font-serif text-2xl md:text-3xl text-primary mb-4">Chúc đôi uyên ương trăm năm hạnh phúc!</h3>
         <p class="text-sm tracking-[0.2em] text-accent uppercase">✦ Ninh Bình — Đà Nẵng — 2026 ✦</p>
     </footer>
@@ -670,17 +914,36 @@
     <!-- Script tạo hiệu ứng -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            const progress = document.getElementById("scroll-progress");
+            const revealItems = document.querySelectorAll(".fade-in");
+
+            revealItems.forEach((el, index) => {
+                el.style.setProperty("--delay", `${Math.min(index * 45, 220)}ms`);
+            });
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in').forEach((el) => {
-                observer.observe(el);
+            }, {
+                threshold: 0.14,
+                rootMargin: "0px 0px -8% 0px"
             });
+
+            revealItems.forEach((el) => observer.observe(el));
+
+            const updateProgress = () => {
+                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+                progress.style.width = `${Math.min(scrolled, 100)}%`;
+            };
+
+            updateProgress();
+            window.addEventListener("scroll", updateProgress, { passive: true });
+            window.addEventListener("resize", updateProgress);
         });
     </script>
 </body>
